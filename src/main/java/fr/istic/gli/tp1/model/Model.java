@@ -11,7 +11,7 @@ import java.util.Map;
 
 public abstract class Model implements Observable {
     protected String label;
-    protected String value;
+    protected double value;
     protected Map<String, Nuplet<Double, String>> activities = new HashMap<>();
 
     private List<Observer> observers = new ArrayList<>();
@@ -41,11 +41,13 @@ public abstract class Model implements Observable {
 
     public abstract void setLabel(String label);
 
-    public abstract String getValue();
+    public abstract double getValue();
 
-    public abstract void setValue(String value);
+    public abstract void setValue(double value);
 
     public abstract Map<String, Nuplet<Double, String>> getActivities();
 
     public abstract void setActivities(Map<String, Nuplet<Double, String>> activities);
+
+    public abstract void reset();
 }

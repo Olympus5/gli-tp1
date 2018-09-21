@@ -4,6 +4,11 @@ public class Nuplet<T, K> {
     private T left;
     private K right;
 
+    public Nuplet(T left, K right) {
+        this.left = left;
+        this.right = right;
+    }
+
     public T getLeft() {
         return left;
     }

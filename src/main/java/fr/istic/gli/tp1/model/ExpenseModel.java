@@ -5,7 +5,7 @@ import fr.istic.gli.tp1.util.Nuplet;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExpenseModel extends Model {
+public class ExpenseModel extends AbstractModel {
     @Override
     public String getLabel() {
         return this.label;
@@ -18,13 +18,13 @@ public class ExpenseModel extends Model {
     }
 
     @Override
-    public double getValue() {
-        return this.value;
+    public double getMoney() {
+        return this.money;
     }
 
     @Override
-    public void setValue(double value) {
-        this.value = value;
+    public void setMoney(double money) {
+        this.money = money;
         this.notifyAllObserver();
     }
 
@@ -40,9 +40,19 @@ public class ExpenseModel extends Model {
     }
 
     @Override
+    public Nuplet<Double, String> getActivity(String name) {
+        return this.activities.get(name);
+    }
+
+    @Override
+    public void setActivity(String name, Double cost, String description) {
+        this.activities.put(name, new Nuplet<>(cost, description));
+    }
+
+    @Override
     public void reset() {
         this.label = "";
-        this.value = 0.0;
+        this.money = 0.0;
         this.activities = new HashMap<>();
     }
 }

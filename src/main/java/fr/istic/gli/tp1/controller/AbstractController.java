@@ -1,11 +1,12 @@
 package fr.istic.gli.tp1.controller;
 
 import fr.istic.gli.tp1.model.AbstractModel;
+import fr.istic.gli.tp1.util.Nuplet;
 
 public abstract class AbstractController implements Controller {
     protected AbstractModel model;
     protected String label, activityName, activityDescription;
-    protected Double money, activityCost;
+    protected double money, activityCost;
 
 
     public AbstractController(AbstractModel model) {
@@ -22,37 +23,49 @@ public abstract class AbstractController implements Controller {
 
     public void setLabel(String label) {
         this.label = label;
+        this.control();
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+        this.control();
     }
 
     public String getActivityName() {
         return activityName;
     }
 
-    public void setActivityName(String activityName) {
+    public void setActivityName(String lastActivityName, String activityName) {
         this.activityName = activityName;
+        this.control();
+    }
+
+    public void setActivity(String name, double cost, String description) {
+        this.activityName = name;
+        this.activityCost = cost;
+        this.activityDescription = description;
+        this.control();
     }
 
     public String getActivityDescription() {
         return activityDescription;
     }
 
-    public void setActivityDescription(String activityDescription) {
+    public void setActivityDescription(String activityName, String activityDescription) {
         this.activityDescription = activityDescription;
+        this.control();
     }
 
-    public Double getMoney() {
-        return money;
-    }
-
-    public void setMoney(Double money) {
-        this.money = money;
-    }
-
-    public Double getActivityCost() {
+    public double getActivityCost() {
         return activityCost;
     }
 
-    public void setActivityCost(Double activityCost) {
+    public void setActivityCost(String activityName, double activityCost) {
         this.activityCost = activityCost;
+        control();
     }
 }

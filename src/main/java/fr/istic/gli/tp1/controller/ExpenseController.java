@@ -9,7 +9,11 @@ public class ExpenseController extends AbstractController {
 
     @Override
     public void control() {
-        if(this.activityCost > 0 && this.activityName.length() > 0) {
+        if((this.activityName.length() > 0 && !(this.activityDescription.length() > 0 && this.activityCost > 0))) {
+            if(this.activityCost < 0) {
+                this.activityCost = 0.0;
+            }
+
             this.model.setActivity(this.activityName, this.activityCost, this.activityDescription);
         }
 
